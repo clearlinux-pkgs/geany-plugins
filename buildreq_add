@@ -1,0 +1,15 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+itstool
+intltool
+intltool-dev
+zlib-dev
+glib-dev
+libgit2-dev
+vte-dev
+libsoup-dev
+libxml2-dev
+enchant-dev
+gpgme-dev
+libassuan-dev
+libgpg-error-dev
