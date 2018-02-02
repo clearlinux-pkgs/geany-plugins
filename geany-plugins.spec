@@ -4,7 +4,7 @@
 #
 Name     : geany-plugins
 Version  : 1.32.0
-Release  : 1
+Release  : 2
 URL      : https://github.com/geany/geany-plugins/archive/1.32.0.tar.gz
 Source0  : https://github.com/geany/geany-plugins/archive/1.32.0.tar.gz
 Summary  : No detailed summary available
