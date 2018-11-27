@@ -4,16 +4,16 @@
 #
 Name     : geany-plugins
 Version  : 1.33.0
-Release  : 5
+Release  : 6
 URL      : https://github.com/geany/geany-plugins/archive/1.33.0.tar.gz
 Source0  : https://github.com/geany/geany-plugins/archive/1.33.0.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause GPL-2.0 GPL-3.0 MIT
-Requires: geany-plugins-lib
-Requires: geany-plugins-doc
-Requires: geany-plugins-data
-Requires: geany-plugins-locales
+Requires: geany-plugins-data = %{version}-%{release}
+Requires: geany-plugins-lib = %{version}-%{release}
+Requires: geany-plugins-license = %{version}-%{release}
+Requires: geany-plugins-locales = %{version}-%{release}
 BuildRequires : enchant-dev
 BuildRequires : glib-dev
 BuildRequires : gpgme-dev
@@ -25,8 +25,10 @@ BuildRequires : libgit2-dev
 BuildRequires : libgpg-error-dev
 BuildRequires : libsoup-dev
 BuildRequires : libxml2-dev
+BuildRequires : pkgconfig(enchant)
 BuildRequires : pkgconfig(geany)
-BuildRequires : pkgconfig(gtk+-2.0)
+BuildRequires : pkgconfig(gtk+-3.0)
+BuildRequires : pkgconfig(gtkspell3-3.0)
 BuildRequires : vte-dev
 BuildRequires : zlib-dev
 
@@ -50,9 +52,9 @@ data components for the geany-plugins package.
 %package dev
 Summary: dev components for the geany-plugins package.
 Group: Development
-Requires: geany-plugins-lib
-Requires: geany-plugins-data
-Provides: geany-plugins-devel
+Requires: geany-plugins-lib = %{version}-%{release}
+Requires: geany-plugins-data = %{version}-%{release}
+Provides: geany-plugins-devel = %{version}-%{release}
 
 %description dev
 dev components for the geany-plugins package.
@@ -69,10 +71,19 @@ doc components for the geany-plugins package.
 %package lib
 Summary: lib components for the geany-plugins package.
 Group: Libraries
-Requires: geany-plugins-data
+Requires: geany-plugins-data = %{version}-%{release}
+Requires: geany-plugins-license = %{version}-%{release}
 
 %description lib
 lib components for the geany-plugins package.
+
+
+%package license
+Summary: license components for the geany-plugins package.
+Group: Default
+
+%description license
+license components for the geany-plugins package.
 
 
 %package locales
@@ -91,7 +102,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1522379911
+export SOURCE_DATE_EPOCH=1543327427
 %autogen --disable-static
 make  %{?_smp_mflags}
 
@@ -103,8 +114,53 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1522379911
+export SOURCE_DATE_EPOCH=1543327427
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/geany-plugins
+cp addons/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/addons_COPYING
+cp autoclose/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/autoclose_COPYING
+cp automark/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/automark_COPYING
+cp codenav/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/codenav_COPYING
+cp commander/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/commander_COPYING
+cp debugger/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/debugger_COPYING
+cp defineformat/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/defineformat_COPYING
+cp devhelp/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/devhelp_COPYING
+cp geanyctags/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/geanyctags_COPYING
+cp geanydoc/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/geanydoc_COPYING
+cp geanyextrasel/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/geanyextrasel_COPYING
+cp geanygendoc/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/geanygendoc_COPYING
+cp geanyinsertnum/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/geanyinsertnum_COPYING
+cp geanylua/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/geanylua_COPYING
+cp geanymacro/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/geanymacro_COPYING
+cp geanyminiscript/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/geanyminiscript_COPYING
+cp geanynumberedbookmarks/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/geanynumberedbookmarks_COPYING
+cp geanypg/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/geanypg_COPYING
+cp geanyprj/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/geanyprj_COPYING
+cp geanypy/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/geanypy_COPYING
+cp geanyvc/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/geanyvc_COPYING
+cp geniuspaste/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/geniuspaste_COPYING
+cp git-changebar/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/git-changebar_COPYING
+cp keyrecord/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/keyrecord_COPYING
+cp latex/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/latex_COPYING
+cp lineoperations/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/lineoperations_COPYING
+cp lipsum/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/lipsum_COPYING
+cp markdown/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/markdown_COPYING
+cp markdown/peg-markdown/LICENSE %{buildroot}/usr/share/package-licenses/geany-plugins/markdown_peg-markdown_LICENSE
+cp multiterm/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/multiterm_COPYING
+cp pairtaghighlighter/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/pairtaghighlighter_COPYING
+cp pohelper/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/pohelper_COPYING
+cp pretty-printer/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/pretty-printer_COPYING
+cp projectorganizer/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/projectorganizer_COPYING
+cp scope/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/scope_COPYING
+cp sendmail/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/sendmail_COPYING
+cp shiftcolumn/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/shiftcolumn_COPYING
+cp spellcheck/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/spellcheck_COPYING
+cp tableconvert/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/tableconvert_COPYING
+cp updatechecker/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/updatechecker_COPYING
+cp utils/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/utils_COPYING
+cp webhelper/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/webhelper_COPYING
+cp workbench/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/workbench_COPYING
+cp xmlsnippets/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/xmlsnippets_COPYING
 %make_install
 %find_lang geany-plugins
 
@@ -129,7 +185,7 @@ rm -rf %{buildroot}
 /usr/lib64/libgeanypluginutils.so
 
 %files doc
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 %doc /usr/share/doc/geany\-plugins/*
 
 %files lib
@@ -171,6 +227,53 @@ rm -rf %{buildroot}
 /usr/lib64/geany/xmlsnippets.so
 /usr/lib64/libgeanypluginutils.so.0
 /usr/lib64/libgeanypluginutils.so.0.0.0
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/geany-plugins/addons_COPYING
+/usr/share/package-licenses/geany-plugins/autoclose_COPYING
+/usr/share/package-licenses/geany-plugins/automark_COPYING
+/usr/share/package-licenses/geany-plugins/codenav_COPYING
+/usr/share/package-licenses/geany-plugins/commander_COPYING
+/usr/share/package-licenses/geany-plugins/debugger_COPYING
+/usr/share/package-licenses/geany-plugins/defineformat_COPYING
+/usr/share/package-licenses/geany-plugins/devhelp_COPYING
+/usr/share/package-licenses/geany-plugins/geanyctags_COPYING
+/usr/share/package-licenses/geany-plugins/geanydoc_COPYING
+/usr/share/package-licenses/geany-plugins/geanyextrasel_COPYING
+/usr/share/package-licenses/geany-plugins/geanygendoc_COPYING
+/usr/share/package-licenses/geany-plugins/geanyinsertnum_COPYING
+/usr/share/package-licenses/geany-plugins/geanylua_COPYING
+/usr/share/package-licenses/geany-plugins/geanymacro_COPYING
+/usr/share/package-licenses/geany-plugins/geanyminiscript_COPYING
+/usr/share/package-licenses/geany-plugins/geanynumberedbookmarks_COPYING
+/usr/share/package-licenses/geany-plugins/geanypg_COPYING
+/usr/share/package-licenses/geany-plugins/geanyprj_COPYING
+/usr/share/package-licenses/geany-plugins/geanypy_COPYING
+/usr/share/package-licenses/geany-plugins/geanyvc_COPYING
+/usr/share/package-licenses/geany-plugins/geniuspaste_COPYING
+/usr/share/package-licenses/geany-plugins/git-changebar_COPYING
+/usr/share/package-licenses/geany-plugins/keyrecord_COPYING
+/usr/share/package-licenses/geany-plugins/latex_COPYING
+/usr/share/package-licenses/geany-plugins/lineoperations_COPYING
+/usr/share/package-licenses/geany-plugins/lipsum_COPYING
+/usr/share/package-licenses/geany-plugins/markdown_COPYING
+/usr/share/package-licenses/geany-plugins/markdown_peg-markdown_LICENSE
+/usr/share/package-licenses/geany-plugins/multiterm_COPYING
+/usr/share/package-licenses/geany-plugins/pairtaghighlighter_COPYING
+/usr/share/package-licenses/geany-plugins/pohelper_COPYING
+/usr/share/package-licenses/geany-plugins/pretty-printer_COPYING
+/usr/share/package-licenses/geany-plugins/projectorganizer_COPYING
+/usr/share/package-licenses/geany-plugins/scope_COPYING
+/usr/share/package-licenses/geany-plugins/sendmail_COPYING
+/usr/share/package-licenses/geany-plugins/shiftcolumn_COPYING
+/usr/share/package-licenses/geany-plugins/spellcheck_COPYING
+/usr/share/package-licenses/geany-plugins/tableconvert_COPYING
+/usr/share/package-licenses/geany-plugins/updatechecker_COPYING
+/usr/share/package-licenses/geany-plugins/utils_COPYING
+/usr/share/package-licenses/geany-plugins/webhelper_COPYING
+/usr/share/package-licenses/geany-plugins/workbench_COPYING
+/usr/share/package-licenses/geany-plugins/xmlsnippets_COPYING
 
 %files locales -f geany-plugins.lang
 %defattr(-,root,root,-)
