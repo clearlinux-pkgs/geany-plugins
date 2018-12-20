@@ -1,18 +1,11 @@
-Configure miss: check >= 0.9.4
+Configure miss: CHECK
 Configure miss: whether the GTK version in use is compatible with plugin Debugger
 Configure miss: whether the GTK version in use is compatible with plugin devhelp
+Configure miss: GEANYGENDOC
 Configure miss: rst2html
+Configure miss: LUA
 Configure miss: whether the GTK version in use is compatible with plugin Geanypy
 Configure miss: library containing mkd_compile
+Configure miss: MARKDOWN
 Configure miss: whether the vala compiler is compatible with multiterm
-Configure miss: whether the GTK version in use is compatible with plugin Scope
-Configure miss: enchant >= 2.0
-Configure miss: check >= 0.9.4
-Configure miss: whether the GTK version in use is compatible with plugin Debugger
-Configure miss: whether the GTK version in use is compatible with plugin devhelp
-Configure miss: rst2html
-Configure miss: whether the GTK version in use is compatible with plugin Geanypy
-Configure miss: library containing mkd_compile
-Configure miss: whether the vala compiler is compatible with multiterm
-Configure miss: whether the GTK version in use is compatible with plugin Scope
-Configure miss: enchant >= 2.0
+Configure miss: WEBHELPER

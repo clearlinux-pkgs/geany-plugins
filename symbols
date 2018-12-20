@@ -1,2 +1,4 @@
+libgeanypluginutils.so.0:gp_filelist_filepath_matches_patterns
 libgeanypluginutils.so.0:gp_filelist_scan_directory
 libgeanypluginutils.so.0:gp_filelist_scan_directory_full
+libgeanypluginutils.so.0:gp_vtecompat_set_font_from_string

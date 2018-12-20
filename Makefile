@@ -1,5 +1,5 @@
 PKG_NAME := geany-plugins
-URL = https://github.com/geany/geany-plugins/archive/1.33.0.tar.gz
+URL = https://plugins.geany.org/geany-plugins/geany-plugins-1.34.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
