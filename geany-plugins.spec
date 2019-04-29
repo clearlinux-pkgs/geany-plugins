@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xB507ACD04BA283C9 (frlan@fsfe.org)
 #
 Name     : geany-plugins
-Version  : 1.34
-Release  : 9
-URL      : https://plugins.geany.org/geany-plugins/geany-plugins-1.34.tar.gz
-Source0  : https://plugins.geany.org/geany-plugins/geany-plugins-1.34.tar.gz
-Source99 : https://plugins.geany.org/geany-plugins/geany-plugins-1.34.tar.gz.sig
-Summary  : No detailed summary available
+Version  : 1.35
+Release  : 10
+URL      : https://plugins.geany.org/geany-plugins/geany-plugins-1.35.tar.gz
+Source0  : https://plugins.geany.org/geany-plugins/geany-plugins-1.35.tar.gz
+Source99 : https://plugins.geany.org/geany-plugins/geany-plugins-1.35.tar.gz.sig
+Summary  : Plugins for Geany
 Group    : Development/Tools
 License  : BSD-2-Clause GPL-2.0 GPL-3.0
 Requires: geany-plugins-data = %{version}-%{release}
@@ -29,6 +29,7 @@ BuildRequires : libgit2-dev
 BuildRequires : libgpg-error-dev
 BuildRequires : libsoup-dev
 BuildRequires : libxml2-dev
+BuildRequires : lua-dev
 BuildRequires : pkgconfig(enchant)
 BuildRequires : pkgconfig(geany)
 BuildRequires : pkgconfig(gtk+-3.0)
@@ -37,13 +38,11 @@ BuildRequires : vte-dev
 BuildRequires : zlib-dev
 
 %description
-===============
-Geany-Plugins
-===============
-Status
-------
-.. image:: https://travis-ci.org/geany/geany-plugins.svg?branch=master
-:target: https://travis-ci.org/geany/geany-plugins
+geanymacro is a plugin to provide user defined macros for Geany. It started out
+as part of the ConText feature parity plugin, which was split into individual
+plugins to better suit Geany's ethos of being as light as possible while
+allowing users to select which features they want to add to the core editor.
+The idea was taken from a Text Editor for Windows called ConText.
 
 %package data
 Summary: data components for the geany-plugins package.
@@ -59,6 +58,7 @@ Group: Development
 Requires: geany-plugins-lib = %{version}-%{release}
 Requires: geany-plugins-data = %{version}-%{release}
 Provides: geany-plugins-devel = %{version}-%{release}
+Requires: geany-plugins = %{version}-%{release}
 
 %description dev
 dev components for the geany-plugins package.
@@ -99,14 +99,14 @@ locales components for the geany-plugins package.
 
 
 %prep
-%setup -q -n geany-plugins-1.34
+%setup -q -n geany-plugins-1.35
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1545310203
+export SOURCE_DATE_EPOCH=1556545668
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -118,7 +118,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1545310203
+export SOURCE_DATE_EPOCH=1556545668
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/geany-plugins
 cp addons/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/addons_COPYING
