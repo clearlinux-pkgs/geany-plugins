@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xB507ACD04BA283C9 (frlan@fsfe.org)
 #
 Name     : geany-plugins
-Version  : 1.35
-Release  : 10
-URL      : https://plugins.geany.org/geany-plugins/geany-plugins-1.35.tar.gz
-Source0  : https://plugins.geany.org/geany-plugins/geany-plugins-1.35.tar.gz
-Source99 : https://plugins.geany.org/geany-plugins/geany-plugins-1.35.tar.gz.sig
-Summary  : Plugins for Geany
+Version  : 1.36
+Release  : 11
+URL      : https://plugins.geany.org/geany-plugins/geany-plugins-1.36.tar.gz
+Source0  : https://plugins.geany.org/geany-plugins/geany-plugins-1.36.tar.gz
+Source1 : https://plugins.geany.org/geany-plugins/geany-plugins-1.36.tar.gz.sig
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause GPL-2.0 GPL-3.0
 Requires: geany-plugins-data = %{version}-%{release}
@@ -38,11 +38,13 @@ BuildRequires : vte-dev
 BuildRequires : zlib-dev
 
 %description
-geanymacro is a plugin to provide user defined macros for Geany. It started out
-as part of the ConText feature parity plugin, which was split into individual
-plugins to better suit Geany's ethos of being as light as possible while
-allowing users to select which features they want to add to the core editor.
-The idea was taken from a Text Editor for Windows called ConText.
+===============
+Geany-Plugins
+===============
+Status
+------
+.. image:: https://travis-ci.org/geany/geany-plugins.svg?branch=master
+:target: https://travis-ci.org/geany/geany-plugins
 
 %package data
 Summary: data components for the geany-plugins package.
@@ -99,26 +101,31 @@ locales components for the geany-plugins package.
 
 
 %prep
-%setup -q -n geany-plugins-1.35
+%setup -q -n geany-plugins-1.36
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1556545668
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1570067972
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 %configure --disable-static
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1556545668
+export SOURCE_DATE_EPOCH=1570067972
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/geany-plugins
 cp addons/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/addons_COPYING
@@ -173,6 +180,15 @@ cp xmlsnippets/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/xml
 
 %files data
 %defattr(-,root,root,-)
+/usr/share/geany-plugins/debugger/continue.png
+/usr/share/geany-plugins/debugger/restart.gif
+/usr/share/geany-plugins/debugger/run.gif
+/usr/share/geany-plugins/debugger/run_to_cursor.gif
+/usr/share/geany-plugins/debugger/step_in.png
+/usr/share/geany-plugins/debugger/step_out.gif
+/usr/share/geany-plugins/debugger/step_over.gif
+/usr/share/geany-plugins/debugger/stop.gif
+/usr/share/geany-plugins/debugger/tabs.gif
 /usr/share/geany-plugins/geniuspaste/pastebins/codepad.org.conf
 /usr/share/geany-plugins/geniuspaste/pastebins/dpaste.de.conf
 /usr/share/geany-plugins/geniuspaste/pastebins/fpaste.org.conf
@@ -227,6 +243,7 @@ cp xmlsnippets/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/xml
 /usr/lib64/geany/automark.so
 /usr/lib64/geany/codenav.so
 /usr/lib64/geany/commander.so
+/usr/lib64/geany/debugger.so
 /usr/lib64/geany/defineformat.so
 /usr/lib64/geany/geanyctags.so
 /usr/lib64/geany/geanydoc.so
