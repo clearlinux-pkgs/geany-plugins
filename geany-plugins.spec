@@ -6,7 +6,7 @@
 #
 Name     : geany-plugins
 Version  : 1.36
-Release  : 11
+Release  : 12
 URL      : https://plugins.geany.org/geany-plugins/geany-plugins-1.36.tar.gz
 Source0  : https://plugins.geany.org/geany-plugins/geany-plugins-1.36.tar.gz
 Source1 : https://plugins.geany.org/geany-plugins/geany-plugins-1.36.tar.gz.sig
