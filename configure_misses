@@ -1,10 +1,5 @@
-Configure miss: CHECK
 Configure miss: whether the GTK version in use is compatible with plugin devhelp
-Configure miss: GEANYGENDOC
 Configure miss: rst2html
-Configure miss: LUA
 Configure miss: whether the GTK version in use is compatible with plugin Geanypy
 Configure miss: library containing mkd_compile
-Configure miss: MARKDOWN
 Configure miss: whether the vala compiler is compatible with multiterm
-Configure miss: WEBHELPER

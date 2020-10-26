@@ -1,15 +1,17 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
-itstool
+check-dev
+cppcheck
+enchant-dev
+glib-dev
+gpgme-dev
 intltool
 intltool-dev
-zlib-dev
-glib-dev
+itstool
+libassuan-dev
 libgit2-dev
-vte-dev
+libgpg-error-dev
 libsoup-dev
 libxml2-dev
-enchant-dev
-gpgme-dev
-libassuan-dev
-libgpg-error-dev
+vte-dev
+zlib-dev
