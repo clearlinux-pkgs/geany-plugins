@@ -6,7 +6,7 @@
 #
 Name     : geany-plugins
 Version  : 1.37
-Release  : 13
+Release  : 14
 URL      : https://plugins.geany.org/geany-plugins/geany-plugins-1.37.tar.gz
 Source0  : https://plugins.geany.org/geany-plugins/geany-plugins-1.37.tar.gz
 Source1  : https://plugins.geany.org/geany-plugins/geany-plugins-1.37.tar.gz.sig
@@ -28,12 +28,12 @@ BuildRequires : itstool
 BuildRequires : libassuan-dev
 BuildRequires : libgit2-dev
 BuildRequires : libgpg-error-dev
-BuildRequires : libsoup-dev
 BuildRequires : libxml2-dev
 BuildRequires : pkgconfig(enchant)
 BuildRequires : pkgconfig(geany)
 BuildRequires : pkgconfig(gtk+-3.0)
 BuildRequires : pkgconfig(gtkspell3-3.0)
+BuildRequires : pkgconfig(libsoup-2.4)
 BuildRequires : vte-dev
 BuildRequires : zlib-dev
 
@@ -109,7 +109,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1603735883
+export SOURCE_DATE_EPOCH=1633283410
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -126,7 +126,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1603735883
+export SOURCE_DATE_EPOCH=1633283410
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/geany-plugins
 cp %{_builddir}/geany-plugins-1.37/addons/COPYING %{buildroot}/usr/share/package-licenses/geany-plugins/4d1d37f306ed270cda5b2741fac3abf0a7b012e5
