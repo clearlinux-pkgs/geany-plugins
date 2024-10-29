@@ -9,7 +9,7 @@
 #
 Name     : geany-plugins
 Version  : 2.0
-Release  : 32
+Release  : 33
 URL      : https://plugins.geany.org/geany-plugins/geany-plugins-2.0.tar.gz
 Source0  : https://plugins.geany.org/geany-plugins/geany-plugins-2.0.tar.gz
 Source1  : https://plugins.geany.org/geany-plugins/geany-plugins-2.0.tar.gz.sig
